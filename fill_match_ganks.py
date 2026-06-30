@@ -9,10 +9,10 @@ api_key = os.environ["API_KEY"]
 database_url = os.environ["DATABASE_URL"]
 
 # my puuid
-# puuid = "axPj0EmED_6dbM3axHyct2teNkP1pEa92W3UJYecaCYhL0BdXyONbQV4mzpT5YlkhaQoxmw96Ro8ug"
+puuid = "axPj0EmED_6dbM3axHyct2teNkP1pEa92W3UJYecaCYhL0BdXyONbQV4mzpT5YlkhaQoxmw96Ro8ug"
 
 # lord semi puuid
-puuid = "fLJxhjWn6UTyK2ACGhBogViw-gnFs-iSdRQTzOqxjlSDdRMilzUQOPmkxEaIVCvFzMzrM-NaFQqZMg"
+# puuid = "fLJxhjWn6UTyK2ACGhBogViw-gnFs-iSdRQTzOqxjlSDdRMilzUQOPmkxEaIVCvFzMzrM-NaFQqZMg"
 
 # --- map geometry ----------------------------------------------------------
 # Summoner's Rift is ~14820 x 14820. Blue base is the (0,0) corner, red base
