@@ -6,7 +6,7 @@ import pandas as pd
 import psycopg
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 api_key = os.environ["API_KEY"]
 database_url = os.environ["DATABASE_URL"]
 # my puuid
