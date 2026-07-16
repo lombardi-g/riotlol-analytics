@@ -8,12 +8,10 @@ load_dotenv()
 api_key = os.environ["API_KEY"]
 db_url = os.environ["DATABASE_URL"]
 
-# my puuid
-puuid = "axPj0EmED_6dbM3axHyct2teNkP1pEa92W3UJYecaCYhL0BdXyONbQV4mzpT5YlkhaQoxmw96Ro8ug"
-
-# lord semi puuid
-# puuid = "fLJxhjWn6UTyK2ACGhBogViw-gnFs-iSdRQTzOqxjlSDdRMilzUQOPmkxEaIVCvFzMzrM-NaFQqZMg"
-
+PUUIDS = {
+    "me": "axPj0EmED_6dbM3axHyct2teNkP1pEa92W3UJYecaCYhL0BdXyONbQV4mzpT5YlkhaQoxmw96Ro8ug",
+    "lord_semi": "fLJxhjWn6UTyK2ACGhBogViw-gnFs-iSdRQTzOqxjlSDdRMilzUQOPmkxEaIVCvFzMzrM-NaFQqZMg",
+}
 
 LANE_ROLES = {"TOP", "MIDDLE", "BOTTOM", "UTILITY"}
 COLS = [
@@ -54,6 +52,14 @@ def process_match(match_id):
     """Fetches match + timeline, formats gank data, and inserts into DB."""
     match_json = fetch_riot(match_id)
     time.sleep(1.2)  # Space out API calls
+
+    # Figure out which tracked player this match actually belongs to
+    participant_puuids = {p["puuid"] for p in match_json["info"]["participants"]}
+    puuid = next((v for v in PUUIDS.values() if v in participant_puuids), None)
+    if puuid is None:
+        print(f"{match_id}: no tracked puuid in this match, skipping")
+        return
+
     timeline = fetch_riot(f"{match_id}/timeline")
 
     info, frames = timeline["info"], timeline["info"]["frames"]
