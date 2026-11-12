@@ -2,6 +2,10 @@
 
 A personal data pipeline that pulls ranked League of Legends match history from the Riot Games API and loads it into a Postgres database for analysis. It goes beyond raw match stats to derive higher-level events — jungle ganks and back/recall timing — from the match timeline data.
 
+[![Postgres](https://img.shields.io/badge/Postgres-%23316192.svg?logo=postgresql&logoColor=white)](#)
+[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)](#)
+[![Power BI](https://custom-icon-badges.demolab.com/badge/Power%20BI-F1C912?logo=power-bi&logoColor=fff)](#)
+
 ## What it does
 
 The pipeline runs in four stages, each a standalone script, each idempotent (safe to re-run — already-processed matches are skipped):
